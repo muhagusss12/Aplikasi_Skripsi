@@ -27,6 +27,7 @@ def start_firewall():
         subprocess.run(['iptables', '-A', 'syn_flood', '-m', 'limit', '--limit', '2/s', '--limit-burst', '7', '-j', 'RETURN'], stderr=subprocess.STDOUT, text=True)
         subprocess.run(['iptables', '-A', 'syn_flood', '-j', 'DROP'], stderr=subprocess.STDOUT, text=True)
         subprocess.run(['iptables', '-A', 'INPUT', '-s', '0.0.0.0/7', '-j', 'DROP'], stderr=subprocess.STDOUT, text=True)
+        subprocess.run(['iptables', '-A', 'INPUT', '-s', '192.168.22.13', '-j', 'DROP'], stderr=subprocess.STDOUT, text=True)
         subprocess.run(['iptables', '-A', 'INPUT', '-s', '2.0.0.0/8', '-j', 'DROP'], stderr=subprocess.STDOUT, text=True)
         subprocess.run(['iptables', '-A', 'INPUT', '-s', '5.0.0.0/8', '-j', 'DROP'], stderr=subprocess.STDOUT, text=True)
         subprocess.run(['iptables', '-A', 'INPUT', '-s', '7.0.0.0/8', '-j', 'DROP'], stderr=subprocess.STDOUT, text=True)
